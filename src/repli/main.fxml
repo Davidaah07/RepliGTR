@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx/8"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="repli.MainController"
+          hgap="10" vgap="10">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" minWidth="140"/>
+        <ColumnConstraints hgrow="ALWAYS"/>
+    </columnConstraints>
+
+    <!-- Fila 0: Aplicación -->
+    <Label text="Aplicación:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="comboAplicacion"
+              prefWidth="200"
+              GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <!-- Fila 1: IMEI -->
+    <Label text="IMEI:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="txtImei"
+               promptText="Digite el IMEI"
+               GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <!-- Fila 2: Fecha Inicio -->
+    <Label text="Fecha Inicio:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <HBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="1">
+        <DatePicker fx:id="fechaInicio"/>
+        <TextField fx:id="horaInicio"
+                   promptText="HH:mm:ss"
+                   prefWidth="80"/>
+    </HBox>
+
+    <!-- Fila 3: Fecha Fin -->
+    <Label text="Fecha Fin:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <HBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="1">
+        <DatePicker fx:id="fechaFin"/>
+        <TextField fx:id="horaFin"
+                   promptText="HH:mm:ss"
+                   prefWidth="80"/>
+    </HBox>
+
+    <!-- Fila 4: Límite -->
+    <Label text="Límite:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <TextField fx:id="txtLimite"
+               promptText="Ej: 5"
+               prefWidth="80"
+               GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <!-- Fila 5: Intervalo (segundos) -->
+    <Label text="Intervalo (seg):" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <TextField fx:id="txtIntervalo"
+               promptText="Ej: 5"
+               prefWidth="80"
+               GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <!-- Fila 6: Botones Iniciar y Detener -->
+    <HBox spacing="10"
+          GridPane.rowIndex="6"
+          GridPane.columnIndex="0"
+          GridPane.columnSpan="2">
+        <Button fx:id="btnIniciar"
+                text="Iniciar"
+                onAction="#onIniciar"
+                prefWidth="100"/>
+        <Button fx:id="btnDetener"
+                text="Detener"
+                onAction="#onDetener"
+                disable="true"
+                prefWidth="100"/>
+    </HBox>
+
+    <!-- Fila 7: Área de log/progreso -->
+    <TextArea fx:id="txtLog"
+              prefRowCount="8"
+              wrapText="true"
+              editable="false"
+              GridPane.rowIndex="7"
+              GridPane.columnIndex="0"
+              GridPane.columnSpan="2"/>
+
+    <!-- Fila 8: Contenedor de barra de carga y estado -->
+    <HBox fx:id="progressContainer"
+          spacing="10"
+          alignment="CENTER_LEFT"
+          visible="false"
+          managed="false"
+          GridPane.rowIndex="8"
+          GridPane.columnIndex="0"
+          GridPane.columnSpan="2">
+        <ProgressBar fx:id="progressBar"
+                     prefWidth="200"
+                     progress="0"
+                     style="-fx-accent: green;"/>
+        <Label fx:id="lblStatus"
+               text="Cargando"/>
+    </HBox>
+
+    <!-- Fila 9: Botón de salir -->
+    <HBox alignment="CENTER_RIGHT"
+          GridPane.rowIndex="9"
+          GridPane.columnIndex="0"
+          GridPane.columnSpan="2">
+        <Button fx:id="btnSalir"
+                text="🔙 Salir"
+                onAction="#onSalir"
+                prefWidth="100"/>
+    </HBox>
+</GridPane>
